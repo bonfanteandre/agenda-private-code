@@ -22,6 +22,12 @@ class PhonesController extends Controller
         return redirect("/clients/{$client->id}");
     }
 
+    public function update(Request $request, Phone $phone)
+    {
+        $phone->phone = $request->phone;
+        $phone->save();
+    }
+
     public function destroy(Request $request, Phone $phone)
     {
         $phone->delete();

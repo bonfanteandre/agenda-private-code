@@ -3,6 +3,7 @@
 @section('title', 'Cadastrar cliente')
 
 @section('content')
+
     <div class="row mt-3">
         <div class="col-sm-12">
             <h3>Edição de cliente</h3>
@@ -28,7 +29,9 @@
             </form>
         </div>
     </div>
+
     <hr>
+
     <div class="row mt-3">
         <div class="col-sm-12">
             <h5>Novo número de telefone</h5>
@@ -45,11 +48,15 @@
                     <i class="fa fa-plus"></i> Adicionar
                 </button>
             </form>
-            </div>
         </div>
-        <br>
+    </div>
+
+    <hr>
+
+    <div class="row mt-3">
         <div class="col-sm-12">
-            <table class="table table-striped table-responsive">
+            <h5>Lista de telefones</h5>
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">Telefone</th>
@@ -60,9 +67,22 @@
                 <tbody>
                 @foreach($client->phones as $phone)
                     <tr>
-                        <td>{{ $phone->phone }}</td>
                         <td>
-                            <button class="btn btn-info"><i class="fa fa-edit"></i></button>
+                            <span id="phone-number-text-{{ $phone->id }}">{{ $phone->phone }}</span>
+                            <div class="input-group w-90" hidden id="phone-number-input-{{ $phone->id }}">
+                                <input type="text" class="form-control" value="{{ $phone->phone }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" onclick="updatePhone({{ $phone->id }})">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    @csrf
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info" onclick="toggleEditPhone({{ $phone->id }})">
+                                <i class="fa fa-edit"></i>
+                            </button>
                         </td>
                         <td>
                             <form method="POST" action="/phones/{{ $phone->id }}" onsubmit="return confirm('Tem certeza que deseja excluir este telefone?')">
@@ -81,7 +101,10 @@
         </div>
     </div>
 
+
+
     <script>
+
         let btnAddPhone = document.querySelector('#btnAddPhone');
 
         let inputPhone = document.querySelector('#phone');
@@ -89,5 +112,39 @@
             this.value = this.value.replace(/[^0-9]/g, '');
             btnAddPhone.disabled = this.value.trim().length <= 0;
         });
+
+        function toggleEditPhone(phoneId) {
+            const inputPhoneNumber = document.querySelector(`#phone-number-input-${phoneId}`);
+            const textPhoneNumber = document.querySelector(`#phone-number-text-${phoneId}`);
+
+            if (textPhoneNumber.hasAttribute('hidden')) {
+                inputPhoneNumber.hidden = true;
+                textPhoneNumber.removeAttribute('hidden');
+            } else {
+                inputPhoneNumber.removeAttribute('hidden');
+                textPhoneNumber.hidden = true;
+            }
+        }
+
+        function updatePhone(phoneId) {
+
+            const token = document.querySelector('input[name="_token"]').value;
+            const phone = document.querySelector(`#phone-number-input-${phoneId} > input`).value;
+
+            let formData = new FormData();
+            formData.append('_token', token);
+            formData.append('id', phoneId);
+            formData.append('phone', phone);
+
+            const url = `/phones/${phoneId}`;
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            }).then(() => {
+                toggleEditPhone(phoneId);
+                document.querySelector(`#phone-number-text-${phoneId}`).textContent = phone;
+                alert('Telefone atualizado com sucesso!');
+            });
+        }
     </script>
 @endsection
