@@ -143,7 +143,6 @@
             }).then(() => {
                 toggleEditPhone(phoneId);
                 document.querySelector(`#phone-number-text-${phoneId}`).textContent = phone;
-                alert('Telefone atualizado com sucesso!');
             });
         }
     </script>
