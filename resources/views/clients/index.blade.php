@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-3 mb-3">
         <div class="col-12">
-            <h3>Cadastro de clientes</h3>
+            <h3>Clientes cadastrados</h3>
             <a href="/clients/create" class="btn btn-success"><i class="fa fa-plus"></i> Cadastrar</a>
         </div>
     </div>
