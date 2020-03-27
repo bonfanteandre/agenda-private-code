@@ -19,7 +19,7 @@ class ClientsController extends Controller
         return view('clients.index', compact('clients', 'successMessage'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         return view('clients.create');
     }
@@ -35,9 +35,11 @@ class ClientsController extends Controller
         return redirect('/clients');
     }
 
-    public function edit(Client $client)
+    public function edit(Request $request, Client $client)
     {
-        return view('clients.edit', compact('client'));
+        $successMessage = $request->session()->get('successMessage');
+
+        return view('clients.edit', compact('client', 'successMessage'));
     }
 
     public function update(StoreClient $request, Client $client)
