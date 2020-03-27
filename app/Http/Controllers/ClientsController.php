@@ -51,8 +51,13 @@ class ClientsController extends Controller
         return redirect('/clients');
     }
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
-        //
+        $client->phones()->delete();
+        $client->delete();
+
+        $request->session()->flash('successMessage', "Cliente {$client->name} foi removido com sucesso!");
+
+        return redirect('/clients');
     }
 }

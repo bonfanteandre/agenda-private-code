@@ -19,6 +19,7 @@
                     <th scope="col">E-mail</th>
                     <th scope="col" class="text-center" style="width: 10%">Telefones</th>
                     <th class="text-center" style="width: 10%"></th>
+                    <th class="text-center" style="width: 10%"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,15 @@
                             <td class="text-center" style="width: 10%">{{ $client->phones->count() }}</td>
                             <td>
                                 <a href="/clients/{{ $client->id }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <form method="POST" action="/clients/{{ $client->id }}" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?')">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
