@@ -15,19 +15,17 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col" style="width: 5%">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Telefones</th>
+                    <th scope="col" class="text-center" style="width: 10%">Telefones</th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach($clients as $client)
                         <tr>
-                            <th scope="row" style="width: 5%">{{ $client->id }}</th>
                             <td>{{ $client->name }}</td>
                             <td>{{ $client->email }}</td>
-                            <td>{{ $client->phones->count() }}</td>
+                            <td class="text-center" style="width: 10%">{{ $client->phones->count() }}</td>
                         </tr>
                     @endforeach
                 <tr>
