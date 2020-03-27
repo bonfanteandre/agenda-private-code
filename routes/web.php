@@ -18,3 +18,5 @@ Route::get('/', 'HomeController@index');
 Route::get('/clients', 'ClientsController@index');
 Route::get('/clients/create', 'ClientsController@create');
 Route::post('/clients/store', 'ClientsController@store');
+Route::get('/clients/{client}', 'ClientsController@edit');
+Route::patch('/clients/update/{client}', 'ClientsController@update');

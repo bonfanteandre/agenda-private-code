@@ -23,7 +23,7 @@ class StoreClient extends FormRequest
     {
         return [
             'required' => 'O campo :attribute é obrigatório',
-            'min' => 'O campo :attribute deve possuir no míniom :min caracteres',
+            'min' => 'O campo :attribute deve possuir no mínimo :min caracteres',
             'email' => 'O campo :attribute deve ser um endereço de e-mail válido'
         ];
     }
