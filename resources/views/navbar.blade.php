@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/clients"><i class="fa fa-users"></i> Clientes</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/account/password/reset"><i class="fa fa-key"></i> Alterar senha</a>
+            </li>
         </ul>
 
         <form method="POST" action="/logout">

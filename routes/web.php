@@ -28,3 +28,6 @@ Route::delete('/clients/{client}', 'ClientsController@destroy');
 Route::post('/clients/{client}/phones', 'PhonesController@store');
 Route::delete('/phones/{phone}', 'PhonesController@destroy');
 Route::post('/phones/{phone}', 'PhonesController@update');
+
+Route::get('/account/password/reset', 'AccountController@resetPasswordForm');
+Route::patch('/account/password/reset', 'AccountController@resetPassword');
