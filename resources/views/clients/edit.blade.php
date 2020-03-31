@@ -82,12 +82,12 @@
                             </div>
                         </td>
                         <td>
-                            <a class="btn btn-primary" target="_blank" href="tel:{{ $phone->phone }}">
+                            <a class="btn btn-primary" target="_blank" href="tel:{{ $phone->phone }}" id="phone-link-{{ $phone->id }}">
                                 <i class="fa fa-phone"></i>
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-success" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone={{ $phone->phone }}">
+                            <a class="btn btn-success" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone={{ $phone->phone }}" id="whatsapp-link-{{ $phone->id }}">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </td>
@@ -155,6 +155,8 @@
             }).then(() => {
                 toggleEditPhone(phoneId);
                 document.querySelector(`#phone-number-text-${phoneId}`).textContent = phone;
+                document.querySelector(`#phone-link-${phoneId}`).href = `tel:${phone}`;
+                document.querySelector(`#whatsapp-link-${phoneId}`).href = `https://api.whatsapp.com/send?1=pt_BR&phone=${phone}`;
             });
         }
     </script>
