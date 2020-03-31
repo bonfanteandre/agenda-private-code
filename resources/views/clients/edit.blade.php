@@ -56,14 +56,14 @@
     <div class="row mt-3">
         <div class="col-sm-12">
             <h5>Lista de telefones</h5>
-            <table class="table table-striped">
+            <table class="table table-striped table-responsive-lg">
                 <thead>
                 <tr>
                     <th scope="col">Telefone</th>
-                    <th class="text-center" style="width: 10%"></th>
-                    <th class="text-center" style="width: 10%"></th>
-                    <th class="text-center" style="width: 10%"></th>
-                    <th class="text-center" style="width: 10%"></th>
+                    <th class="text-center" style="width: 1%"></th>
+                    <th class="text-center" style="width: 1%"></th>
+                    <th class="text-center" style="width: 1%"></th>
+                    <th class="text-center" style="width: 1%"></th>
                 </tr>
                 </thead>
                 <tbody>
