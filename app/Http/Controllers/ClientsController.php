@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Http\Requests\StoreClient;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -15,7 +16,15 @@ class ClientsController extends Controller
 
     public function index(Request $request)
     {
-        $clients = Client::query()
+        $textFilter = $request->has('q')
+            ? "%{$request->q}%"
+            : '%%';
+
+        $clients = Client::where('name', 'like', $textFilter)
+            ->orWhere('email', 'like', $textFilter)
+            ->orWhereHas('phones', function (Builder $query) use ($textFilter) {
+                $query->where('phone', 'like', $textFilter);
+            })
             ->orderBy('name')
             ->get();
 
