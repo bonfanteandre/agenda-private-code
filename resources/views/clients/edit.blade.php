@@ -62,6 +62,8 @@
                     <th scope="col">Telefone</th>
                     <th class="text-center" style="width: 10%"></th>
                     <th class="text-center" style="width: 10%"></th>
+                    <th class="text-center" style="width: 10%"></th>
+                    <th class="text-center" style="width: 10%"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,6 +80,16 @@
                                     @csrf
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" target="_blank" href="tel:{{ $phone->phone }}">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone={{ $phone->phone }}">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
                         </td>
                         <td>
                             <button class="btn btn-info" onclick="toggleEditPhone({{ $phone->id }})">
