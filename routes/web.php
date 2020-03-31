@@ -31,3 +31,7 @@ Route::post('/phones/{phone}', 'PhonesController@update');
 
 Route::get('/account/password/reset', 'AccountController@resetPasswordForm');
 Route::patch('/account/password/reset', 'AccountController@resetPassword');
+
+Route::get('/my-activities', 'ActivitiesController@my');
+Route::get('/activities', 'ActivitiesController@all');
+Route::get('/activities/{activity}', 'ActivitiesController@view');

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Client;
+use App\Observers\ClientObserver;
+use App\Observers\PhoneObserver;
+use App\Phone;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Client::observe(ClientObserver::class);
+        Phone::observe(PhoneObserver::class);
     }
 }
