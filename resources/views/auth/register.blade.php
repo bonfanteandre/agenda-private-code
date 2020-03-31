@@ -53,6 +53,9 @@
                                 <button type="submit" class="btn btn-success">
                                     Registrar
                                 </button>
+                                <a class="btn btn-link" href="/login">
+                                    Entrar
+                                </a>
                             </div>
                         </div>
                     </form>
