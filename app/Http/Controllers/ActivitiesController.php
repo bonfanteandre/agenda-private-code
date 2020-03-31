@@ -11,7 +11,7 @@ class ActivitiesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function my()
     {
         $activities = auth()

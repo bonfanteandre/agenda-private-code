@@ -35,3 +35,10 @@ Route::patch('/account/password/reset', 'AccountController@resetPassword');
 Route::get('/my-activities', 'ActivitiesController@my');
 Route::get('/activities', 'ActivitiesController@all');
 Route::get('/activities/{activity}', 'ActivitiesController@view');
+
+Route::get('/groups', 'GroupsController@index');
+Route::get('/groups/create', 'GroupsController@create');
+Route::post('/groups/store', 'GroupsController@store');
+Route::get('/groups/{group}', 'GroupsController@edit');
+Route::patch('/groups/update/{group}', 'GroupsController@update');
+
