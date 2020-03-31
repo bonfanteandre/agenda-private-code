@@ -31,9 +31,9 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col" class="text-center" style="width: 10%">Telefones</th>
-                    <th class="text-center" style="width: 10%"></th>
-                    <th class="text-center" style="width: 10%"></th>
+                    <th scope="col" class="text-center" style="width: 1%">Telefones</th>
+                    <th class="text-center" style="width: 1%"></th>
+                    <th class="text-center" style="width: 1%"></th>
                 </tr>
                 </thead>
                 <tbody>
