@@ -25,3 +25,7 @@ Route::delete('/clients/{client}', 'ClientsController@destroy');
 Route::post('/clients/{client}/phones', 'PhonesController@store');
 Route::delete('/phones/{phone}', 'PhonesController@destroy');
 Route::post('/phones/{phone}', 'PhonesController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
