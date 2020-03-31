@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PhonesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, Client $client)
     {
         $request->validate(['phone' => 'required']);

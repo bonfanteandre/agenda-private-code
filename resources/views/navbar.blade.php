@@ -10,5 +10,13 @@
                 <a class="nav-link" href="/clients"><i class="fa fa-users"></i> Clientes</a>
             </li>
         </ul>
+
+        <form method="POST" action="/logout">
+
+            @csrf
+            <button type="submit" class="btn btn-default text-white">
+                <i class="fa fa-sign-out-alt"></i> Sair
+            </button>
+        </form>
     </div>
 </nav>
