@@ -34,7 +34,10 @@ class ActivitiesController extends Controller
 
     public function view(Activity $activity)
     {
-        abort_unless(auth()->user()->canViewActivities(), 401);
+        abort_unless(
+            auth()->user()->canViewActivities() ||
+            $activity->user->id === auth()->user()->id
+        , 401);
 
         return view('activities.view', compact('activity'));
     }
