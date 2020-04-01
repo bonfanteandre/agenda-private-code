@@ -42,3 +42,9 @@ Route::post('/groups/store', 'GroupsController@store');
 Route::get('/groups/{group}', 'GroupsController@edit');
 Route::patch('/groups/update/{group}', 'GroupsController@update');
 
+Route::get('/users', 'UsersController@index');
+Route::get('/users/create', 'UsersController@create');
+Route::post('/users/store', 'UsersController@store');
+Route::get('/users/{user}', 'UsersController@edit');
+Route::patch('/users/update/{user}', 'UsersController@update');
+
