@@ -88,7 +88,7 @@
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-success" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone={{ $phone->phone }}" id="whatsapp-link-{{ $phone->id }}">
+                            <a class="btn btn-success" target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=+55{{ $phone->phone }}" id="whatsapp-link-{{ $phone->id }}">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </td>
@@ -128,7 +128,7 @@
         let inputPhone = document.querySelector('#phone');
         inputPhone.addEventListener('keyup', function() {
             this.value = this.value.replace(/[^0-9]/g, '');
-            btnAddPhone.disabled = this.value.trim().length <= 0;
+            btnAddPhone.disabled = this.value.trim().length < 10;
         });
 
         function toggleEditPhone(phoneId) {
@@ -162,7 +162,7 @@
                 toggleEditPhone(phoneId);
                 document.querySelector(`#phone-number-text-${phoneId}`).textContent = phone;
                 document.querySelector(`#phone-link-${phoneId}`).href = `tel:${phone}`;
-                document.querySelector(`#whatsapp-link-${phoneId}`).href = `https://api.whatsapp.com/send?1=pt_BR&phone=${phone}`;
+                document.querySelector(`#whatsapp-link-${phoneId}`).href = `https://api.whatsapp.com/send?phone=55${phone}`;
             });
         }
     </script>
