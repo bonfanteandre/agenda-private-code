@@ -15,8 +15,6 @@ class PhonesController extends Controller
 
     public function store(Request $request, Client $client)
     {
-        abort_unless(auth()->user()->canEditPhones(), 401);
-
         $request->validate(['phone' => 'required']);
 
         $phone = new Phone();
