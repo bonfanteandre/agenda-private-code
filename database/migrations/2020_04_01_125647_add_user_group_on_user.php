@@ -17,8 +17,8 @@ class AddUserGroupOnUser extends Migration
             $table->unsignedBigInteger('user_group_id')->default(2);
 
             $table->foreign('user_group_id')
-                ->on('user_groups')
-                ->references('id');
+                ->references('id')
+                ->on('user_groups');
         });
     }
 
