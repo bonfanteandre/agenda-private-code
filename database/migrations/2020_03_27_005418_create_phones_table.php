@@ -19,7 +19,7 @@ class CreatePhonesTable extends Migration
             $table->unsignedBigInteger('client_id');
 
             $table->foreign('client_id')
-                ->referenceson('id')
+                ->references('id')
                 ->on('clients');
 
 
