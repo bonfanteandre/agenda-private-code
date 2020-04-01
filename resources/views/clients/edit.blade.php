@@ -53,6 +53,7 @@
 
     <hr>
 
+    @if(auth()->user()->canViewPhones())
     <div class="row mt-3">
         <div class="col-sm-12">
             <h5>Lista de telefones</h5>
@@ -92,18 +93,22 @@
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-info" onclick="toggleEditPhone({{ $phone->id }})">
-                                <i class="fa fa-edit"></i>
-                            </button>
+                            @if(auth()->user()->canEditPhones())
+                                <button class="btn btn-info" onclick="toggleEditPhone({{ $phone->id }})">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            @endif
                         </td>
                         <td>
-                            <form method="POST" action="/phones/{{ $phone->id }}" onsubmit="return confirm('Tem certeza que deseja excluir este telefone?')">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+                            @if(auth()->user()->canDeletePhones())
+                                <form method="POST" action="/phones/{{ $phone->id }}" onsubmit="return confirm('Tem certeza que deseja excluir este telefone?')">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -112,6 +117,7 @@
             </table>
         </div>
     </div>
+    @endif
 
 
 

@@ -18,9 +18,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/my-activities"><i class="fa fa-user-clock"></i> Minhas atividades</a>
             </li>
+            @if(auth()->user()->canViewActivities())
             <li class="nav-item">
                 <a class="nav-link" href="/activities"><i class="fa fa-history"></i> Todas atividades</a>
             </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="/account/password/reset"><i class="fa fa-key"></i> Alterar senha</a>
             </li>

@@ -46,4 +46,24 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class, 'user_group_id', 'id');
     }
+
+    public function canViewPhones()
+    {
+        return $this->group->can_view_phones;
+    }
+
+    public function canEditPhones()
+    {
+        return $this->group->can_edit_phones;
+    }
+
+    public function canDeletePhones()
+    {
+        return $this->group->can_delete_phones;
+    }
+
+    public function canViewActivities()
+    {
+        return $this->group->can_view_activities;
+    }
 }

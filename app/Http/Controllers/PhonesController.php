@@ -15,6 +15,8 @@ class PhonesController extends Controller
 
     public function store(Request $request, Client $client)
     {
+        abort_unless(auth()->user()->canEditPhones(), 401);
+
         $request->validate(['phone' => 'required']);
 
         $phone = new Phone();
@@ -29,12 +31,16 @@ class PhonesController extends Controller
 
     public function update(Request $request, Phone $phone)
     {
+        abort_unless(auth()->user()->canEditPhones(), 401);
+
         $phone->phone = $request->phone;
         $phone->save();
     }
 
     public function destroy(Request $request, Phone $phone)
     {
+        abort_unless(auth()->user()->canDeletePhones(), 401);
+
         $phone->delete();
 
         $request->session()->flash('successMessage', 'Telefone excluído com sucesso!');

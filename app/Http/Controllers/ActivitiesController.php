@@ -25,6 +25,8 @@ class ActivitiesController extends Controller
 
     public function all()
     {
+        abort_unless(auth()->user()->canViewActivities(), 401);
+
         $activities = Activity::query()->orderBy('created_at', 'desc')->get();
 
         return view('activities.all', compact('activities'));
@@ -32,6 +34,8 @@ class ActivitiesController extends Controller
 
     public function view(Activity $activity)
     {
+        abort_unless(auth()->user()->canViewActivities(), 401);
+
         return view('activities.view', compact('activity'));
     }
 }
