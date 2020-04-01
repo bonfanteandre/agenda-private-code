@@ -23,6 +23,8 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $users = User::query()
             ->orderBy('id', 'desc')
             ->get();
@@ -38,6 +40,8 @@ class UsersController extends Controller
      */
     public function create()
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $groups = Group::query()
             ->orderBy('name')
             ->get();
@@ -53,6 +57,8 @@ class UsersController extends Controller
      */
     public function store(StoreUser $request)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -73,6 +79,8 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $groups = Group::query()
             ->orderBy('name')
             ->get();
@@ -89,6 +97,8 @@ class UsersController extends Controller
      */
     public function update(UpdateUser $request, User $user)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->user_group_id = $request->user_group_id;

@@ -9,12 +9,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/clients"><i class="fa fa-users"></i> Clientes</a>
             </li>
+            @if(auth()->user()->isMaster())
             <li class="nav-item">
                 <a class="nav-link" href="/groups"><i class="fa fa-lock"></i> Grupos de usuários</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/users"><i class="fa fa-users"></i> Usuários</a>
             </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="/my-activities"><i class="fa fa-user-clock"></i> Minhas atividades</a>
             </li>

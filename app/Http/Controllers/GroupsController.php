@@ -20,6 +20,8 @@ class GroupsController extends Controller
      */
     public function index(Request $request)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $groups = Group::query()
             ->orderBy('name')
             ->get();
@@ -36,6 +38,8 @@ class GroupsController extends Controller
      */
     public function create()
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         return view('groups.create');
     }
 
@@ -47,6 +51,8 @@ class GroupsController extends Controller
      */
     public function store(StoreGroup $request)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $request->validated();
 
         $group = new Group;
@@ -70,6 +76,8 @@ class GroupsController extends Controller
      */
     public function edit(Group $group)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         return view('groups.edit', compact('group'));
     }
 
@@ -82,6 +90,8 @@ class GroupsController extends Controller
      */
     public function update(StoreGroup $request, Group $group)
     {
+        abort_unless(auth()->user()->isMaster(), 401);
+
         $request->validated();
 
         $group->name = $request->name;

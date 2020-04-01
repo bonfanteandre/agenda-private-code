@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->group->can_view_activities;
     }
+
+    public function isMaster()
+    {
+        return $this->is_master;
+    }
 }
